@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sam Howard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#1F3A2B;--forest-2:#2E5240;--sage:#8FA37C;--sage-2:#B7C4A4;--cream:#EFE8D5;--off:#FAF8F2;
+  --bg:#F4EFE1;--ink:#1F3A2B;
+  --font:"Familjen Grotesk","Helvetica Neue",Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14251B;--ink:#EFE8D5;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#14251B;--ink:#EFE8D5;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:1.1rem;line-height:1.4}
+:focus-visible{outline:3px solid var(--sage);outline-offset:3px}
+.wrap{max-width:84rem;margin:0 auto;padding:0 clamp(1rem,3.5vw,2.5rem)}
+
+.hero{background:var(--forest);color:var(--cream);margin-top:calc(-1 * env(safe-area-inset-top,0px));padding:calc(env(safe-area-inset-top,0px) + 1.5rem) 0 clamp(1.25rem,3vw,2.5rem)}
+h1{font-weight:700;font-size:clamp(2.6rem,9vw,7.5rem);line-height:.9;letter-spacing:-.04em;margin:0 0 clamp(1.25rem,3vw,2.5rem)}
+.reel{animation:rise 1s ease-out both}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+/* Placeholder frames: swap each for a photo or film */
+.frame{position:relative;display:block;overflow:hidden;border-radius:6px;background:linear-gradient(135deg,var(--sage),var(--forest-2))}
+.film{aspect-ratio:16/9}
+.frame.play::after{content:"";position:absolute;inset:0;margin:auto;width:clamp(3.5rem,9vw,6rem);height:clamp(3.5rem,9vw,6rem);border-radius:50%;background:var(--off);opacity:.92}
+.frame.play::before{content:"";position:absolute;inset:0;margin:auto;width:clamp(.9rem,2.4vw,1.6rem);height:clamp(1.1rem,3vw,2rem);background:var(--forest);clip-path:polygon(0 0,100% 50%,0 100%);z-index:1;transform:translateX(12%)}
+.g1{background:linear-gradient(160deg,var(--sage-2),var(--forest-2))}
+.g2{background:linear-gradient(20deg,var(--forest),var(--sage))}
+.g3{background:linear-gradient(200deg,var(--cream),var(--sage))}
+.g4{background:linear-gradient(120deg,var(--forest-2),var(--sage-2))}
+.g5{background:linear-gradient(300deg,var(--off),var(--sage-2))}
+.g6{background:linear-gradient(60deg,var(--sage),var(--forest))}
+.g7{background:linear-gradient(240deg,var(--sage-2),var(--forest))}
+
+h2{font-weight:500;font-size:1.1rem;letter-spacing:0;margin:clamp(2.5rem,6vw,5rem) 0 1rem}
+.pair{display:grid;gap:.75rem;grid-template-columns:1fr}
+.grid{display:grid;gap:.75rem;grid-template-columns:repeat(2,1fr);grid-auto-rows:30vw}
+.grid .frame{grid-column:span 1;grid-row:span 2}
+.grid .w{grid-column:span 2}
+@media (min-width:48rem){
+  .pair{grid-template-columns:1fr 1fr}
+  .grid{grid-template-columns:repeat(6,1fr);grid-auto-rows:min(11vw,9.5rem)}
+  .grid .a{grid-column:span 4;grid-row:span 3}
+  .grid .b{grid-column:span 2;grid-row:span 3}
+  .grid .c,.grid .d,.grid .e{grid-column:span 2;grid-row:span 2}
+  .grid .f,.grid .g{grid-column:span 3;grid-row:span 2}
+}
+.frame{transition:filter .25s}
+.frame:hover{filter:brightness(1.06)}
+main{padding-bottom:clamp(2rem,6vw,5rem)}
+@media (prefers-reduced-motion:reduce){.reel{animation:none}.frame{transition:none}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <h1>Sam Howard</h1>
+  <div class="frame film play reel" role="img" aria-label="Showreel"></div>
+</div></header>
+<main><div class="wrap">
+  <h2>Film</h2>
+  <div class="pair">
+    <div class="frame film play g2" role="img" aria-label="Film 1"></div>
+    <div class="frame film play g4" role="img" aria-label="Film 2"></div>
+  </div>
+  <h2>Photography</h2>
+  <div class="grid">
+    <div class="frame a w g1" role="img" aria-label="Photo 1"></div>
+    <div class="frame b g3" role="img" aria-label="Photo 2"></div>
+    <div class="frame c g5" role="img" aria-label="Photo 3"></div>
+    <div class="frame d g6" role="img" aria-label="Photo 4"></div>
+    <div class="frame e g7" role="img" aria-label="Photo 5"></div>
+    <div class="frame f w g2" role="img" aria-label="Photo 6"></div>
+    <div class="frame g w g4" role="img" aria-label="Photo 7"></div>
+  </div>
+</div></main>
+</body>
+</html>
